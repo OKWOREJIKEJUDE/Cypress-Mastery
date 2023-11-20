@@ -21,5 +21,6 @@ describe("Handle Tabs", function(){
         cy.go("back")//them we navigate back to the parent tab
     })
 
+
     //todo NB....Approach 1 is the best because some domains might noot match. So if you open the first link and try to verify the second link with the first one, it might not match in some cases. 
 })
