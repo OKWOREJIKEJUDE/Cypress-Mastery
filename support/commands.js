@@ -25,5 +25,18 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 
+
+
 //<reference types="Cypress"/>  //todo This is for cypress
  //<reference types="cypress-xpath"/>  //todo This is for xpath 
+
+
+
+
+ //Creating our own custom cammand that will help us to access iframes whenever we want to use iframe
+ Cypress.Commands.add("myIframeHere", (iframe)=>{
+    return cy.get(iframe)//get the frame
+    .its("0.contentDocument.body")//check the document that contains the element
+    .should("be.visible")//check if the element is visible
+    .then(cy.wrap);
+ })
