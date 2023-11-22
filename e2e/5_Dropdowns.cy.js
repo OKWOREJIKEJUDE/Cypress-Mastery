@@ -15,7 +15,7 @@ describe("Dropdowns", function() {
     it.skip("Auto suggeted dropDown", function(){
         cy.visit("https://www.wikipedia.org/")
         cy.get("#searchInput").type("Flutter")
-        cy.get(".suggestion-title").contains("Flutterwave").click()
+        cy.get(".suggestion-title").contains("Flutterwave").click()//NB...this selector(.suggestion-title) matches all the elements that displayed. Then we are now telling it to choose the one with the same texts as "Flutterwave"
     })
 
     //When dealing with dynamic dropdown search[i.e google search style]
