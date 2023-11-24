@@ -32,13 +32,21 @@ describe("Mouse Operations",()=>{
         cy.iframe("#iframeResult").find("#field2").should("have.value", "Hello World!")
     })
 
-    it("Drag and Drop using plugin", ()=>{
-        cy.visit("")
+    it.skip("Drag and Drop using plugin", ()=>{
+        cy.visit("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html")
+        cy.get("#box6").should("be.visible")
+        cy.get("#box106").should("be.visible")
+        cy.wait(2000)
+        cy.get("#box6").drag("#box106", {force:true})//This means that we are capturing box6 and dragiing it into box106.
+        //NB.. force:true--means that you are forcefully performing the operation
     })
 
-
-    // it.skip("Scrolling Page", ()=>{
-    //     cy.visit("")
-    // })
-    
+    it("Scrolling Page", ()=>{
+        cy.visit("https://www.countries-ofthe-world.com/flags-of-the-world.html")
+        cy.get("img[alt='Flag of Nigeria']").scrollIntoView({duration: 4000})//This means it will take 4 seconds to scroll to where the nigeria flag is located
+        cy.get("img[alt='Flag of Nigeria']").should("be.visible")//Checking if the element is visible
+        cy.get("img[alt='Flag of Argentina']").scrollIntoView({duration:4000})//Scrolling back up to Argentina
+        cy.get("img[alt='Flag of Argentina']").should("be.visible")//Checking if the element is visible
+        cy.get("#footer").scrollIntoView({duration:4000})//scrolling down to footer 
+    })
 })
